@@ -7,6 +7,13 @@ namespace Ozimek.Battleships
         public static string MISS = "Miss.";
         public static string SUNK = "Sunk.";
         private Board _board;
+        public bool Finished
+        {
+            get
+            {
+                return _board.NoShipsLeft();
+            }
+        }
 
         public Game(Board board)
         {

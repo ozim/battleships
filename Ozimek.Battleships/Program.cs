@@ -47,7 +47,7 @@ namespace Ozimek.Battleships
                 {
                     Console.WriteLine("Something went wrong, try again please.");
                 }
-            } while (!board.GameFinished);
+            } while (!game.Finished);
 
         }
     }

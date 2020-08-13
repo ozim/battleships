@@ -54,5 +54,21 @@ namespace Ozimek.Battleships.Test
             response = game.TakeShot(0, 0);
             Assert.AreEqual(Game.MISS, response);
         }
+
+        [Test]
+        public void WhenAllShipsAreGoneEndGame()
+        {
+            int shipLength = 1;
+
+            Board board = new Board();
+            var shipAdded = board.AddShip(shipLength, 0, 0, false);
+
+            Game game = new Game(board);
+            Assert.IsFalse(game.Finished);
+
+            game.TakeShot(0, 0);
+
+            Assert.True(game.Finished);
+        }
     }
 }

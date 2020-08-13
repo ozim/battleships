@@ -10,16 +10,12 @@ namespace Ozimek.Battleships
         private int[,] board = new int[BOARD_ROWS, BOARD_COLUMNS];
         public int RowCount { get { return BOARD_ROWS; } }
         public int ColumnCount { get { return BOARD_COLUMNS; } }
-        public bool GameFinished { get
-            {
-                return NoShipsLeft();
-            }
-        }
+
         public Board()
         {
         }
 
-        private bool NoShipsLeft()
+        public bool NoShipsLeft()
         {
             int remainingPices = 0;
             for (int i = 0; i < BOARD_ROWS; i++)
