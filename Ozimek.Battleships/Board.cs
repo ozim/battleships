@@ -9,9 +9,29 @@ namespace Ozimek.Battleships
         private int[,] board = new int[BOARD_ROWS, BOARD_COLUMNS];
         public int RowCount { get { return BOARD_ROWS; } }
         public int ColumnCount { get { return BOARD_COLUMNS; } }
-
+        public bool GameFinished { get
+            {
+                return NoShipsLeft();
+            }
+        }
         public Board()
         {
+        }
+
+        private bool NoShipsLeft()
+        {
+            int remainingPices = 0;
+            for (int i = 0; i < BOARD_ROWS; i++)
+            {
+                for (int j = 0; j < BOARD_COLUMNS; j++)
+                {
+                    if (board[i, j] > 0)
+                    {
+                        remainingPices++;
+                    }
+                }
+            }
+            return remainingPices == 0;
         }
 
         private bool AreCoordinatesValid(int shipSize, int startingRow, int startingColumn, bool vertical)
