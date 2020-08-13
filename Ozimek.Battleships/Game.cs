@@ -15,7 +15,11 @@ namespace Ozimek.Battleships
 
         public string TakeShot(int row, int column)
         {
-            return HIT;
+            if (_board.GetCoordinateState(row, column) > 0) {
+                return HIT;
+            }
+            
+            return MISS;
         }
     }
 }

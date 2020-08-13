@@ -9,7 +9,7 @@ namespace Ozimek.Battleships.Test
         public void ReturnsHitWhenShipIsInCoordinate()
         {
             Board board = new Board();
-            board.AddShip(1, 0, 0, false);
+            board.AddShip(2, 0, 0, false);
             Game game = new Game(board);
             
             string response = game.TakeShot(0,0);
@@ -26,6 +26,19 @@ namespace Ozimek.Battleships.Test
 
             string response = game.TakeShot(0, 0);
             Assert.AreEqual(Game.MISS, response);
+        }
+
+
+        [Test]
+        public void ReturnsSunkWhenShipIsInCoordinateAndNoMorePartsLeft()
+        {
+            Board board = new Board();
+            board.AddShip(1, 0, 0, false);
+            Game game = new Game(board);
+
+            string response = game.TakeShot(0, 0);
+
+            Assert.AreEqual(Game.SUNK, response);
         }
     }
 }
