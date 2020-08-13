@@ -9,7 +9,6 @@ namespace Ozimek.Battleships
         static void Main(string[] args)
         {
             var random = new Random();
-            bool finished = false;
             Board board = new Board();
 
             var vertical = random.Next(0, 2) == 1;
@@ -38,12 +37,16 @@ namespace Ozimek.Battleships
             do
             {
                 var coordinatesInput = Console.ReadLine();
-                var coordinate = new Coordinate(coordinatesInput);
-                Console.WriteLine($"{coordinate.Row} {coordinate.Column}");
-                Console.WriteLine(coordinatesInput);
-                Console.WriteLine(board.GetCoordinateState(coordinate.Row, coordinate.Column));
-                finished = coordinatesInput == "q";
-            } while (!finished);
+                try
+                {
+                    var coordinate = new Coordinate(coordinatesInput);
+                    Console.WriteLine(board.GetCoordinateState(coordinate.Row, coordinate.Column));
+                }
+                catch (Exception e) when (e is FormatException || e is ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Something went wrong, try again please.");
+                }
+            } while (!board.GameFinished);
 
         }
     }
