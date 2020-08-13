@@ -9,8 +9,10 @@ namespace Ozimek.Battleships
 
         public (int,int) Parse(string input)
         {
+            string rowText = input.Substring(1);
+            int rowInArray = int.Parse(rowText) - 1;
 
-            return (0, 0);
+            return (rowInArray, 0);
         }
     }
 }
