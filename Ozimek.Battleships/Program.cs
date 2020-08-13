@@ -37,6 +37,7 @@ namespace Ozimek.Battleships
             Game game = new Game(board);
             do
             {
+                Console.WriteLine("Take a shot!:");
                 var coordinatesInput = Console.ReadLine();
                 try
                 {
