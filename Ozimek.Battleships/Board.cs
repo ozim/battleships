@@ -87,5 +87,10 @@ namespace Ozimek.Battleships
         {
             return board[row, column];
         }
+
+        public void MarkHit(int row, int column)
+        {
+            board[row, column] = 0;
+        }
     }
 }

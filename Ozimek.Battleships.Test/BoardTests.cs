@@ -94,5 +94,23 @@ namespace Ozimek.Battleships.Test
             shipAdded = board.AddShip(shipLength, 0, 0, false);
             Assert.False(shipAdded);
         }
+
+        [Test]
+        public void HittingShipChangesFieldToZero()
+        {
+            int shipLength = 5;
+
+            Board board = new Board();
+            var shipAdded = board.AddShip(shipLength, 0, 0, false);
+            Assert.True(shipAdded);
+
+            var fieldState = board.GetCoordinateState(0, 0);
+            Assert.IsTrue(fieldState > 0);
+            board.MarkHit(0, 0);
+
+            fieldState = board.GetCoordinateState(0, 0);
+
+            Assert.True(fieldState == 0);
+        }
     }
 }
