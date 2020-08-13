@@ -7,6 +7,8 @@ namespace Ozimek.Battleships
         const int BOARD_COLUMNS = 10;
 
         private int[,] board = new int[BOARD_ROWS, BOARD_COLUMNS];
+        public int RowCount { get { return BOARD_ROWS; } }
+        public int ColumnCount { get { return BOARD_COLUMNS; } }
 
         public Board()
         {
