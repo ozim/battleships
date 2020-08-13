@@ -16,7 +16,25 @@ namespace Ozimek.Battleships
 
         public void AddShip(int shipSize, int startingRow, int startingColumn, bool vertical)
         {
+            var row = startingRow;
+            var column = startingColumn;
 
+            if (vertical)
+            {
+                for (int i = 0; i < shipSize; i++)
+                {
+                    board[row, column] = 1;
+                    row++;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < shipSize; i++)
+                {
+                    board[row, column] = 1;
+                    column++;
+                }
+            }
         }
 
         public int GetCoordinateState(int row, int column)
