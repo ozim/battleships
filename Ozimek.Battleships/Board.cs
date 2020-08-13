@@ -17,6 +17,8 @@ namespace Ozimek.Battleships
         public bool AddShip(int shipSize, int startingRow, int startingColumn, bool vertical)
         {
             if (startingRow > BOARD_ROWS || startingColumn > BOARD_COLUMNS) return false;
+            if(startingRow < 0 || startingColumn < 0) return false;
+
             var row = startingRow;
             var column = startingColumn;
 

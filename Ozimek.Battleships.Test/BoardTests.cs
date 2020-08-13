@@ -47,5 +47,27 @@ namespace Ozimek.Battleships.Test
 
             Assert.False(shipAdded);
         }
+
+        [Test]
+        public void AddShipInvalidColumnBelowRangeReturnsFalse()
+        {
+            int shipLength = 5;
+
+            Board board = new Board();
+            var shipAdded = board.AddShip(shipLength, 0, -11, false);
+
+            Assert.False(shipAdded);
+        }
+
+        [Test]
+        public void AddShipInvalidRowAboveRangeReturnsFalse()
+        {
+            int shipLength = 5;
+
+            Board board = new Board();
+            var shipAdded = board.AddShip(shipLength, 11, 8, false);
+
+            Assert.False(shipAdded);
+        }
     }
 }
