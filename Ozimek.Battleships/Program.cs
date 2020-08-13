@@ -6,7 +6,14 @@ namespace Ozimek.Battleships
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bool finished = false;
+            do
+            {
+                var coordinatesInput = Console.ReadLine();
+                Console.WriteLine(coordinatesInput);
+                finished = coordinatesInput == "q";
+            } while (!finished);
+
         }
     }
 }
