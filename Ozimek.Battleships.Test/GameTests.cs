@@ -40,5 +40,19 @@ namespace Ozimek.Battleships.Test
 
             Assert.AreEqual(Game.SUNK, response);
         }
+
+        [Test]
+        public void AfterHitBoardMarksCoordinateAsMiss()
+        {
+            Board board = new Board();
+            board.AddShip(2, 0, 0, false);
+            Game game = new Game(board);
+
+            string response = game.TakeShot(0, 0);
+            Assert.AreEqual(Game.HIT, response);
+
+            response = game.TakeShot(0, 0);
+            Assert.AreEqual(Game.MISS, response);
+        }
     }
 }

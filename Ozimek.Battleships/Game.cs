@@ -16,6 +16,8 @@ namespace Ozimek.Battleships
         public string TakeShot(int row, int column)
         {
             if (_board.GetCoordinateState(row, column) > 0) {
+
+                _board.MarkHit(row, column);
                 return HIT;
             }
             
