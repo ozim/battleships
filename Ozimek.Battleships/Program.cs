@@ -35,14 +35,13 @@ namespace Ozimek.Battleships
                 startingColumn = random.Next(0, 10);
             }
 
-            CoordinatesParser parser = new CoordinatesParser();
             do
             {
                 var coordinatesInput = Console.ReadLine();
-                var coordinate = parser.Parse(coordinatesInput);
-                Console.WriteLine($"{coordinate.Item1} {coordinate.Item2}");
+                var coordinate = new Coordinate(coordinatesInput);
+                Console.WriteLine($"{coordinate.Row} {coordinate.Column}");
                 Console.WriteLine(coordinatesInput);
-                Console.WriteLine(board.GetCoordinateState(coordinate.Item1, coordinate.Item2));
+                Console.WriteLine(board.GetCoordinateState(coordinate.Row, coordinate.Column));
                 finished = coordinatesInput == "q";
             } while (!finished);
 
