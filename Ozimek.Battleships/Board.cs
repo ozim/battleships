@@ -18,6 +18,19 @@ namespace Ozimek.Battleships
         {
             if (startingRow > BOARD_ROWS || startingColumn > BOARD_COLUMNS) return false;
             if(startingRow < 0 || startingColumn < 0) return false;
+            if (vertical)
+            {
+                if (startingRow + shipSize > BOARD_ROWS-1)
+                {
+                    return false;
+                };
+            } else
+            {
+                if (startingColumn + shipSize > BOARD_COLUMNS-1)
+                {
+                    return false;
+                };
+            }
 
             var row = startingRow;
             var column = startingColumn;
