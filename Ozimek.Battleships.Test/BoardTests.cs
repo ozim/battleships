@@ -23,5 +23,29 @@ namespace Ozimek.Battleships.Test
 
             Assert.AreEqual(EXPECTED_HITS, countHits);
         }
+
+        [Test]
+        public void AddShipInvalidColumnReturnsFalse()
+        {
+
+            const int EXPECTED_HITS = 5;
+
+            Board board = new Board();
+            var shipAdded = board.AddShip(EXPECTED_HITS, 0, 11, false);
+
+            Assert.False(shipAdded);
+        }
+
+        [Test]
+        public void AddShipInvalidRowReturnsFalse()
+        {
+
+            const int EXPECTED_HITS = 5;
+
+            Board board = new Board();
+            var shipAdded = board.AddShip(EXPECTED_HITS, -1, 8, false);
+
+            Assert.False(shipAdded);
+        }
     }
 }

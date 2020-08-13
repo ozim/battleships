@@ -14,8 +14,9 @@ namespace Ozimek.Battleships
         {
         }
 
-        public void AddShip(int shipSize, int startingRow, int startingColumn, bool vertical)
+        public bool AddShip(int shipSize, int startingRow, int startingColumn, bool vertical)
         {
+            if (startingRow > BOARD_ROWS || startingColumn > BOARD_COLUMNS) return false;
             var row = startingRow;
             var column = startingColumn;
 
@@ -35,6 +36,8 @@ namespace Ozimek.Battleships
                     column++;
                 }
             }
+
+            return true;
         }
 
         public int GetCoordinateState(int row, int column)
