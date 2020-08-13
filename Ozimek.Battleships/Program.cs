@@ -34,13 +34,14 @@ namespace Ozimek.Battleships
                 startingColumn = random.Next(0, 10);
             }
 
+            Game game = new Game(board);
             do
             {
                 var coordinatesInput = Console.ReadLine();
                 try
                 {
                     var coordinate = new Coordinate(coordinatesInput);
-                    Console.WriteLine(board.GetCoordinateState(coordinate.Row, coordinate.Column));
+                    Console.WriteLine(game.TakeShot(coordinate.Row, coordinate.Column));
                 }
                 catch (Exception e) when (e is FormatException || e is ArgumentOutOfRangeException)
                 {
