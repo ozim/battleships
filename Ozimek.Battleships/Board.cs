@@ -6,6 +6,7 @@ namespace Ozimek.Battleships
         const int BOARD_ROWS = 10;
         const int BOARD_COLUMNS = 10;
 
+        private int shipsOnBoard = 0;
         private int[,] board = new int[BOARD_ROWS, BOARD_COLUMNS];
         public int RowCount { get { return BOARD_ROWS; } }
         public int ColumnCount { get { return BOARD_COLUMNS; } }
@@ -79,6 +80,7 @@ namespace Ozimek.Battleships
             var shipIsValid = AreCoordinatesValid(shipSize, startingRow, startingColumn, vertical);
             if (shipIsValid)
             {
+                shipsOnBoard++;
                 var row = startingRow;
                 var column = startingColumn;
 
@@ -86,7 +88,7 @@ namespace Ozimek.Battleships
                 {
                     for (int i = 0; i < shipSize; i++)
                     {
-                        board[row, column] = 1;
+                        board[row, column] = shipsOnBoard;
                         row++;
                     }
                 }
@@ -94,7 +96,7 @@ namespace Ozimek.Battleships
                 {
                     for (int i = 0; i < shipSize; i++)
                     {
-                        board[row, column] = 1;
+                        board[row, column] = shipsOnBoard;
                         column++;
                     }
                 }

@@ -15,12 +15,30 @@ namespace Ozimek.Battleships
 
         public string TakeShot(int row, int column)
         {
-            if (_board.GetCoordinateState(row, column) > 0) {
+            var currentHitShip = _board.GetCoordinateState(row, column);
 
+            if (currentHitShip > 0)
+            {
                 _board.MarkHit(row, column);
+                int remainingPices = 0;
+                for (int i = 0; i < _board.RowCount; i++)
+                {
+                    for (int j = 0; j < _board.ColumnCount; j++)
+                    {
+                        if (_board.GetCoordinateState(i, j) == currentHitShip)
+                        {
+                            remainingPices++;
+                        }
+                    }
+                }
+                if (remainingPices == 0)
+                {
+                    return SUNK;
+                }
+
                 return HIT;
             }
-            
+
             return MISS;
         }
     }
