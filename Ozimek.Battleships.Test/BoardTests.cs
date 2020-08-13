@@ -81,5 +81,18 @@ namespace Ozimek.Battleships.Test
 
             Assert.False(shipAdded);
         }
+
+        [Test]
+        public void AddShipOverlappingWithOtherShipReturnsFalse()
+        {
+            int shipLength = 5;
+
+            Board board = new Board();
+            var shipAdded = board.AddShip(shipLength, 0, 0, false);
+            Assert.True(shipAdded);
+
+            shipAdded = board.AddShip(shipLength, 0, 0, false);
+            Assert.False(shipAdded);
+        }
     }
 }
