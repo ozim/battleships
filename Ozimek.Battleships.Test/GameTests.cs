@@ -1,10 +1,8 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 namespace Ozimek.Battleships.Test
 {
     public class GameTests
     {
-
         [Test]
         public void ReturnsHitWhenShipIsInCoordinate()
         {
@@ -25,9 +23,9 @@ namespace Ozimek.Battleships.Test
             Game game = new Game(board);
 
             string response = game.TakeShot(0, 0);
+
             Assert.AreEqual(Game.MISS, response);
         }
-
 
         [Test]
         public void ReturnsSunkWhenShipIsInCoordinateAndNoMorePartsLeft()

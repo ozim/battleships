@@ -9,8 +9,7 @@ namespace Ozimek.Battleships
         static void Main(string[] args)
         {
             var random = new Random();
-            Board board = new Board();
-
+            var board = new Board();
             var vertical = random.Next(0, 2) == 1;
             var startingRow = random.Next(0, 10);
             var startingColumn = random.Next(0, 10);
@@ -21,12 +20,14 @@ namespace Ozimek.Battleships
                 startingRow = random.Next(0, 10);
                 startingColumn = random.Next(0, 10);
             }
+
             while (!board.AddShip(DESTROYER_SIZE, startingRow, startingColumn, vertical))
             {
                 vertical = random.Next(0, 2) == 1;
                 startingRow = random.Next(0, 10);
                 startingColumn = random.Next(0, 10);
             }
+
             while (!board.AddShip(DESTROYER_SIZE, startingRow, startingColumn, vertical))
             {
                 vertical = random.Next(0, 2) == 1;
@@ -49,7 +50,6 @@ namespace Ozimek.Battleships
                     Console.WriteLine("Something went wrong, try again please.");
                 }
             } while (!game.Finished);
-
         }
     }
 }

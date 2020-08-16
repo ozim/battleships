@@ -1,5 +1,4 @@
-﻿using System;
-namespace Ozimek.Battleships
+﻿namespace Ozimek.Battleships
 {
     public class Game
     {

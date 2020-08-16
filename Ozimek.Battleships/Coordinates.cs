@@ -17,7 +17,6 @@ namespace Ozimek.Battleships
 
         public Coordinate(string input)
         {
-
             string rowText = input.Substring(1);
             int rowInArray = int.Parse(rowText) - 1;
 

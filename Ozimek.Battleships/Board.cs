@@ -1,5 +1,4 @@
-﻿using System;
-namespace Ozimek.Battleships
+﻿namespace Ozimek.Battleships
 {
     public class Board
     {
@@ -10,10 +9,6 @@ namespace Ozimek.Battleships
         private int[,] board = new int[BOARD_ROWS, BOARD_COLUMNS];
         public int RowCount { get { return BOARD_ROWS; } }
         public int ColumnCount { get { return BOARD_COLUMNS; } }
-
-        public Board()
-        {
-        }
 
         public bool NoShipsLeft()
         {
@@ -28,6 +23,7 @@ namespace Ozimek.Battleships
                     }
                 }
             }
+
             return remainingPices == 0;
         }
 
@@ -35,6 +31,7 @@ namespace Ozimek.Battleships
         {
             if (startingRow > BOARD_ROWS || startingColumn > BOARD_COLUMNS) return false;
             if (startingRow < 0 || startingColumn < 0) return false;
+
             int row = startingRow;
             int column = startingColumn;
             if (vertical)
@@ -42,7 +39,8 @@ namespace Ozimek.Battleships
                 if (startingRow + shipSize > BOARD_ROWS - 1)
                 {
                     return false;
-                };
+                }
+
                 for (int i = 0; i < shipSize; i++)
                 {
                     if (board[row, column] != 0)
@@ -57,7 +55,8 @@ namespace Ozimek.Battleships
                 if (startingColumn + shipSize > BOARD_COLUMNS - 1)
                 {
                     return false;
-                };
+                }
+
                 for (int i = 0; i < shipSize; i++)
                 {
                     if (board[row, column] != 0)

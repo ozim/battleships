@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 namespace Ozimek.Battleships.Test
 {
     public class BoardTests
@@ -9,9 +8,9 @@ namespace Ozimek.Battleships.Test
         {
             int countHits = 0;
             const int EXPECTED_HITS = 5;
-
             Board board = new Board();
             board.AddShip(EXPECTED_HITS, 0, 0, false);
+
             for (int i = 0; i < board.RowCount; i++)
             {
                 for (int j = 0; j < board.ColumnCount; j++)
@@ -26,10 +25,9 @@ namespace Ozimek.Battleships.Test
         [Test]
         public void AddShipInvalidColumnReturnsFalse()
         {
-
             const int EXPECTED_HITS = 5;
-
             Board board = new Board();
+
             var shipAdded = board.AddShip(EXPECTED_HITS, 0, 11, false);
 
             Assert.False(shipAdded);
@@ -38,10 +36,9 @@ namespace Ozimek.Battleships.Test
         [Test]
         public void AddShipInvalidRowReturnsFalse()
         {
-
             const int EXPECTED_HITS = 5;
-
             Board board = new Board();
+
             var shipAdded = board.AddShip(EXPECTED_HITS, -1, 8, false);
 
             Assert.False(shipAdded);
@@ -51,8 +48,8 @@ namespace Ozimek.Battleships.Test
         public void AddShipInvalidColumnBelowRangeReturnsFalse()
         {
             int shipLength = 5;
-
             Board board = new Board();
+
             var shipAdded = board.AddShip(shipLength, 0, -11, false);
 
             Assert.False(shipAdded);
@@ -62,8 +59,8 @@ namespace Ozimek.Battleships.Test
         public void AddShipInvalidRowAboveRangeReturnsFalse()
         {
             int shipLength = 5;
-
             Board board = new Board();
+
             var shipAdded = board.AddShip(shipLength, 11, 8, false);
 
             Assert.False(shipAdded);
@@ -72,10 +69,9 @@ namespace Ozimek.Battleships.Test
         [Test]
         public void AddShipEndingOutsideOfBoardReturnsFalse()
         {
-
             int shipLength = 5;
-
             Board board = new Board();
+
             var shipAdded = board.AddShip(shipLength, 8, 8, false);
 
             Assert.False(shipAdded);
