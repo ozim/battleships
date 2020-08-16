@@ -46,23 +46,31 @@ namespace Ozimek.Battleships.Test
             board.AddShip(2, 0, 0, false);
             Game game = new Game(board);
 
+            game.TakeShot(0, 0);
             string response = game.TakeShot(0, 0);
-            Assert.AreEqual(Game.HIT, response);
 
-            response = game.TakeShot(0, 0);
             Assert.AreEqual(Game.MISS, response);
+        }
+
+        [Test]
+        public void WhenShipIsPresentEndGameNotSet()
+        {
+            int shipLength = 1;
+            Board board = new Board();
+            board.AddShip(shipLength, 0, 0, false);
+
+            Game game = new Game(board);
+
+            Assert.IsFalse(game.Finished);
         }
 
         [Test]
         public void WhenAllShipsAreGoneEndGame()
         {
             int shipLength = 1;
-
             Board board = new Board();
-            var shipAdded = board.AddShip(shipLength, 0, 0, false);
-
+            board.AddShip(shipLength, 0, 0, false);
             Game game = new Game(board);
-            Assert.IsFalse(game.Finished);
 
             game.TakeShot(0, 0);
 

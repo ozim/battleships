@@ -81,12 +81,11 @@ namespace Ozimek.Battleships.Test
         public void AddShipOverlappingWithOtherShipReturnsFalse()
         {
             int shipLength = 5;
-
             Board board = new Board();
-            var shipAdded = board.AddShip(shipLength, 0, 0, false);
-            Assert.True(shipAdded);
+            board.AddShip(shipLength, 0, 0, false);
 
-            shipAdded = board.AddShip(shipLength, 0, 0, false);
+            var shipAdded = board.AddShip(shipLength, 0, 0, false);
+
             Assert.False(shipAdded);
         }
 
@@ -94,16 +93,24 @@ namespace Ozimek.Battleships.Test
         public void HittingShipChangesFieldToZero()
         {
             int shipLength = 5;
-
             Board board = new Board();
-            var shipAdded = board.AddShip(shipLength, 0, 0, false);
-            Assert.True(shipAdded);
+            board.AddShip(shipLength, 0, 0, false);
 
-            var fieldState = board.GetCoordinateState(0, 0);
-            Assert.IsTrue(fieldState > 0);
             board.MarkHit(0, 0);
+            var fieldState = board.GetCoordinateState(0, 0);
 
-            fieldState = board.GetCoordinateState(0, 0);
+            Assert.True(fieldState == 0);
+        }
+
+        [Test]
+        public void AddingShipSetsFieldToNonZero()
+        {
+            int shipLength = 5;
+            Board board = new Board();
+            board.AddShip(shipLength, 0, 0, false);
+
+            board.MarkHit(0, 0);
+            var fieldState = board.GetCoordinateState(0, 0);
 
             Assert.True(fieldState == 0);
         }
